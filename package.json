@@ -13,6 +13,7 @@
   "author": "rameez ahsan",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.1",
     "express": "^4.17.1",
@@ -20,6 +21,7 @@
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.17",
+    "morgan": "^1.10.0",
     "request": "^2.88.2"
   },
   "devDependencies": {

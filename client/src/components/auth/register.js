@@ -27,7 +27,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to='/posts' />;
   }
 
   return (
@@ -84,7 +84,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
               required
             />
           </div>
-          <input type='submit' className='btn btn-pink' value='Register' />
+          <input type='submit' className='btn btn-success' value='Register' />
         </form>
         <p className='my-1'>
           Already have an account? <Link to='/login'>Sign In</Link>

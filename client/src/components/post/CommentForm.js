@@ -27,7 +27,7 @@ const CommentForm = ({ postId, addComment }) => {
         ></textarea>
         <input
           type='submit'
-          className='btn btn-pink my-1'
+          className='btn btn-success my-1'
           value='add comment'
         />
       </form>

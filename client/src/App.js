@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
+import Navbar2 from './components/layout/Navbar2';
 import Landing from './components/layout/Landing';
 import Alert from './components/layout/Alert';
 
@@ -21,7 +22,12 @@ import AddEducation from './components/profile-form/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
+import MentalHealth from './components/posts/MentalHealth';
+import ItAndTech from './components/posts/ItAndTech';
+import Politics from './components/posts/Politics';
 import Post from './components/post/Post';
+import NotFound from './components/layout/NotFound';
+import PostForm from './components/posts/PostForm';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -37,6 +43,7 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
+          <Navbar2/>
           <Route exact path='/' component={Landing} />
           <section className='container'>
             <Alert />
@@ -45,6 +52,10 @@ const App = () => {
               <Route exact path='/login' component={Login} />
               <Route exact path='/profiles' component={Profiles} />
               <Route exact path='/profile/:id' component={Profile} />
+              <PrivateRoute exact path='/mental-health' component={MentalHealth} />
+              <PrivateRoute exact path='/it-and-tech' component={ItAndTech} />
+              <PrivateRoute exact path='/politics' component={Politics} />
+              {/* <Route component={NotFound} /> */}
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute
                 exact
@@ -68,6 +79,10 @@ const App = () => {
               />
               <PrivateRoute exact path='/posts' component={Posts} />
               <PrivateRoute exact path='/post/:id' component={Post} />
+              <PrivateRoute exact path='/write-post' component={PostForm} />
+              {/* <PrivateRoute exact path='/mental-health' component={MentalHealth} />
+              <PrivateRoute exact path='/it-and-tech' component={ItAndTech} />
+              <PrivateRoute exact path='/politics' component={Politics} /> */}
             </Switch>
           </section>
         </Fragment>

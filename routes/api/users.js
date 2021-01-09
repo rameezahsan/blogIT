@@ -25,7 +25,7 @@ router.post(
       return res.status(400).json({ received_errors: errors });
     }
 
-    const { email, password, name } = req.body; //it simply took the name,email,password items from the req.json file and saved it here by the same name with const type
+    const { email, password, name } = req.body; //it simply took the name,email,password items from the req.body object and saved it here by the same name with const type
     try {
       //seeing if user exists
       let user = await User.findOne({ email: email });

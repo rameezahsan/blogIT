@@ -25,8 +25,8 @@ export const getPosts = () => async (dispatch) => {
     dispatch({
       type: POST_ERROR,
       payload: {
-        message: error.response.statusText,
-        status: error.response.status,
+        // message: error.response.statusText,
+        // status: error.response.status,
       },
     });
   }
@@ -122,7 +122,35 @@ export const addPost = (formData) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.post('/api/posts', formData, config);
+    const res = await axios.post('/api/posts', formData,config);
+    dispatch({
+      type: ADD_POST,
+      payload: res.data,
+    });
+    dispatch(setAlert('Blog posted successfully!', 'success'));
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        message: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//add MENTAL HEALTH POST
+export const addPostMentalHealth = (formData) => async (dispatch) => {
+  console.log("mental health 2222 called")
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  
+  try {
+    const res = await axios.post('/api/posts/mental-health',formData,config);
+    console.log(res)
     dispatch({
       type: ADD_POST,
       payload: res.data,
@@ -138,6 +166,58 @@ export const addPost = (formData) => async (dispatch) => {
     });
   }
 };
+
+//add IT TECH POST
+export const addPostItTech = (formData,category) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.post('/api/posts/it-and-tech', formData,category,config);
+    dispatch({
+      type: ADD_POST,
+      payload: res.data,
+    });
+    dispatch(setAlert('Post created!', 'success'));
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        message: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+//add Politics post
+export const addPostPolitics = (formData,category) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.post('/api/posts/politics', formData,category,config);
+    dispatch({
+      type: ADD_POST,
+      payload: res.data,
+    });
+    dispatch(setAlert('Post created!', 'success'));
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        message: error.response.statusText,
+        status: error.response.status,
+      },
+    });
+  }
+};
+
+
 
 //ADD COMMENT
 export const addComment = (postId, formData) => async (dispatch) => {

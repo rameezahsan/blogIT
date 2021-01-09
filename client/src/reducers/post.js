@@ -4,13 +4,20 @@ import {
   UPDATE_LIKES,
   DELETE_POST,
   ADD_POST,
+  // ADD_HEALTH_SCIENCEPOST,
+  // ADD_IT_TECH_POST,
+  // ADD_MENTALHEALTH_POST,
   GET_POST,
   ADD_COMMENT,
   REMOVE_COMMENT,
 } from '../actions/types';
 import { post } from 'request';
+import { addPostMentalHealth } from '../actions/post';
 
 const initialState = {
+  itNTechPosts:[],
+  politicsPosts:[],
+  mentalHealthPosts:[],
   posts: [],
   post: null,
   loading: true,
@@ -33,13 +40,21 @@ export default function (state = initialState, action) {
         ...state,
         post: payload,
         loading: false,
-      };
+      };    
     case ADD_POST:
       return {
         ...state,
         posts: [payload, ...state.posts],
         loading: false,
       };
+      // case ADD_IT_TECH_POSTS:
+      // return {
+      //   ...state,
+      //   itNTechPosts: [payload, ...state.itNTechPosts],
+      //   loading: false,
+      // };
+
+
     case POST_ERROR:
       return {
         ...state,

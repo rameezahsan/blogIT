@@ -26,6 +26,7 @@ const profileSchema = new mongoose.Schema({
     required: true,
   },
 
+
   bio: {
     type: String,
   },

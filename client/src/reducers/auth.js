@@ -6,12 +6,16 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
+  // LOGIN_VENDSUCCESS
   ACCOUNT_DELETED,
 } from '../actions/types';
 
 const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
+  // isVendor:null,
+  // isAdmin:null,
+  // isBuyer:null,
   loading: true,
   user: null,
 };
@@ -36,6 +40,17 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         loading: false,
       };
+    // case LOGIN_VENDSUCCESS:
+    //   localStorage.setItem('token', payload.token);
+    //   return {
+    //     ...state,
+    //     ...payload,
+    //     isAuthenticated: true,
+    //     isVendor:true,
+    //     isAdmin:false,
+    //     isBuyer:false,
+    //     loading: false,
+    //   };
 
     case REGISTER_FAIL:
     case AUTH_ERROR:

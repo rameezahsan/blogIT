@@ -8,21 +8,46 @@ const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    //category:''
   });
   const { email, password } = formData;
+// const [isVendor, setIsVendor]=usestate("false") <- ignore
 
+// const { email, password,category } = formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log('success!');
+
+    
+    //     if(isVendor){
+    //       loginVendor(email,password); <-ignore
+    //     }
     login(email, password);
+    // login(email, password,category);
+
   };
+
+//   const handleClick=(e)=>{
+// if(e.target.id==="admin"){
+    //  setFormData({...formData,category:"admin"})
+// }
+// else if(e.target.id==="buyer"){
+     //  setFormData({...formData,category:"buyer"})
+// }
+// else(e.target.id==="vendor"){
+     //  setFormData({...formData,category:"vendor"})
+// }
+//   }
+
+
+
 
   //redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to='/posts' />;
   }
   return (
     <Fragment>
@@ -55,7 +80,7 @@ const Login = ({ login, isAuthenticated }) => {
             />
           </div>
 
-          <input type='submit' className='btn btn-pink' value='Login' />
+          <input type='submit' className='btn btn-success' value='Login' />
         </form>
         <p className='my-1'>
           Don't have an account? <Link to='/register'>Sign Up</Link>

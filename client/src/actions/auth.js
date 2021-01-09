@@ -70,6 +70,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 };
 
 //LOGGING IN A USER
+// export const login = (email, password,category)
 export const login = (email, password) => async (dispatch) => {
   // const config = {
   //   headers: {
@@ -83,6 +84,16 @@ export const login = (email, password) => async (dispatch) => {
       .post('/api/auth', body)
       .then((res) => {
         console.log(res);
+        // if(category==="vendor"){
+          // dispatch({type:LOGIN_VENDSUCCESS,payload:res.data})
+        // }
+        // if(category==="buyer"){
+          // dispatch({type:LOGIN_BUYERSUCCESS,payload:res.data})
+        // }
+        // if(category==="admin"){
+          // dispatch({type:LOGIN_ADMINSUCCESS,payload:res.data})
+        // }
+
         dispatch({
           type: LOGIN_SUCCESS,
           payload: res.data, //token will be returned when successul login occurs

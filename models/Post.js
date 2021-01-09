@@ -4,6 +4,14 @@ const PostSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
   },
+  title:{
+    type: String,
+    // required: true,
+  },
+  category:{
+    type:String,
+    required:true,
+  },
   text: {
     type: String,
     required: true,
@@ -48,6 +56,8 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+},
+// { typeKey: '$type' }
+);
 
 module.exports = Post = mongoose.model('post', PostSchema);

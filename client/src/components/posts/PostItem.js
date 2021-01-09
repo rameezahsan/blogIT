@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
 
 const PostItem = ({
-  post: { _id, text, name, user, likes, comments, date },
+  post: { _id, text, name, user, category,title,likes, comments, date },
   auth,
   addLike,
   removeLike,
@@ -19,14 +19,28 @@ const PostItem = ({
         <Link to={`/profile/${user}`}>
           <img
             className='round-img'
-            src='https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200'
+            src='https://www.w3schools.com/w3images/avatar2.png'
             alt=''
           />
           <h4>{name}</h4>
         </Link>
       </div>
+
+      
+
       <div>
+      {title && <Link to={`/post/${_id}`}>
+      <p className="blog-title">{title}</p>
+      </Link> }
+        
         <p className='my-1'>{text}</p>
+        {category &&
+        <Link to={`/${category}`}>
+        <p className="category-link">
+        category: {category}
+        </p>
+        </Link> 
+        }
         <p className='post-date'>
           Posted on <Moment format='DD/MM/YYYY'>{date}</Moment>
         </p>
@@ -49,7 +63,7 @@ const PostItem = ({
               <i className='fas fa-thumbs-down'></i>
             </button>
             <Link to={`/post/${_id}`} className='btn btn-dark'>
-              Discussion{' '}
+             <i className="fas fa-comments"/> Discussion{' '}
               {comments.length > 0 && (
                 <span className='comment-count'>{comments.length}</span>
               )}
@@ -61,7 +75,7 @@ const PostItem = ({
                 className='btn btn-danger'
                 onClick={(e) => deletePost(_id)}
               >
-                <i className='fas fa-times'></i>
+               <i className="fas fa-trash"/>
               </button>
             )}
           </Fragment>

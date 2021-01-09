@@ -9,6 +9,8 @@ import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
 import ProfileGithub from './ProfileGithub';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const Profile = ({
   match,
@@ -26,9 +28,21 @@ const Profile = ({
         <Spinner />
       ) : (
         <Fragment>
-          <Link to='/profiles' className='btn btn-pink'>
-            back to profiles
-          </Link>
+        <div className="breadcrumbs my-2">
+      <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
+        <Link to="/posts">
+        <i className="fas fa-home"></i> Home
+        </Link>
+        <Link to="/">
+        {/* <Typography className="text-dark large"> */}
+        <i className='fas fa-user'/> visiting profile
+        {/* </Typography> */}
+        </Link>
+      </Breadcrumbs>
+      </div>
+          {/* <Link to='/posts' className='btn btn-pink my-2'>
+            back to posts
+          </Link> */}
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (

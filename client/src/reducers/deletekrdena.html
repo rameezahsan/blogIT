@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+<p id="demo"></p>
+
+<script>
+    class car{
+        constructor(color, engine, make){
+            this.color=color;
+            this.engine=engine;
+            this.make=make;
+        }
+        display(){
+            return "the color is "+this.color+" and engine, make is "+this.engine+" "+this.make;
+        }
+    }
+nissan=new car("red", "v52R", 2020);
+document.getElementById("demo").innerHTML=nissan.display();
+
+</script>
+
+</body>
+
+
+</html>

@@ -3,6 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile } from '../../actions/profile';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
@@ -47,7 +49,20 @@ const CreateProfile = ({ createProfile, history }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Create Your Profile</h1>
+    <div className="breadcrumbs my-2">
+      <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
+        <Link to="/posts">
+        <i className="fas fa-home"></i> Home
+        </Link>
+        <Link to="/dashboard">
+        <i className='fas fa-user'/> My Profile
+        </Link>
+        <Link to="/create-profile">
+        <i className='fas fa-user'/>Create Profile
+        </Link>
+      </Breadcrumbs>
+      </div>
+      <h1 className='large text-primary bg-dark my-2' style={{textAlign:"center"}}>Create Your Profile</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Let's get some information to make your
         profile stand out!
@@ -57,13 +72,13 @@ const CreateProfile = ({ createProfile, history }) => {
         <div className='form-group'>
           <select name='status' value={status} onChange={(e) => onChange(e)}>
             <option value='0'>* Select Professional Status</option>
-            <option value='Developer'>Developer</option>
-            <option value='Junior Developer'>Junior Developer</option>
-            <option value='Senior Developer'>Senior Developer</option>
-            <option value='Manager'>Manager</option>
-            <option value='Student or Learning'>Student or Learning</option>
-            <option value='Instructor'>Instructor or Teacher</option>
-            <option value='Intern'>Intern</option>
+            <option value='Developer'>programmer</option>
+            <option value='Junior Developer'>health specialist</option>
+            <option value='Senior Developer'>content writer</option>
+            <option value='Manager'>corporate person</option>
+            <option value='Student or Learning'>student</option>
+            <option value='Instructor'>Teacher</option>
+            <option value='Intern'>digital marketer</option>
             <option value='Other'>Other</option>
           </select>
           <small className='form-text'>
@@ -115,10 +130,10 @@ const CreateProfile = ({ createProfile, history }) => {
             onChange={(e) => onChange(e)}
           />
           <small className='form-text'>
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
+            Please use comma separated values (programming, writing, photography)
           </small>
         </div>
-        <div className='form-group'>
+        {/* <div className='form-group'>
           <input
             type='text'
             placeholder='Github Username'
@@ -130,7 +145,7 @@ const CreateProfile = ({ createProfile, history }) => {
             If you want your latest repos and a Github link, include your
             username
           </small>
-        </div>
+        </div> */}
         <div className='form-group'>
           <textarea
             placeholder='A short bio of yourself'
@@ -211,7 +226,7 @@ const CreateProfile = ({ createProfile, history }) => {
           </Fragment>
         )}
 
-        <input type='submit' className='btn btn-primary my-1' />
+        <input type='submit' className='btn btn-submit btn-success my-1' />
 
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back

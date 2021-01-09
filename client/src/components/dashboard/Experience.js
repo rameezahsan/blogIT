@@ -22,14 +22,14 @@ const Experience = ({ experience, deleteExperience }) => {
           className='btn btn-danger'
           onClick={() => deleteExperience(exp._id)}
         >
-          delete
+          <i className="fas fa-trash"/>
         </button>
       </td>
     </tr>
   ));
   return (
     <Fragment>
-      <h2 className='my-2'>Your Experience</h2>
+      <h2 className='my-2 bg-secondary p-1'><i className="fas fa-caret-right"/>  <i className="fab fa-black-tie"/> Your Experience</h2>
       <table className='table'>
         <thead>
           <tr>

@@ -3,6 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const EditProfile = ({
   createProfile,
@@ -70,7 +72,21 @@ const EditProfile = ({
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Create Your Profile</h1>
+    <div className="breadcrumbs my-2">
+      <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
+        <Link to="/posts">
+        <i className="fas fa-home"></i> Home
+        </Link>
+        <Link to="/dashboard">
+        <i className='fas fa-user'/> My Profile
+        </Link>
+        <Link to="/edit-profile">
+        <i className='fas fa-user-cog'/> Edit Profile
+        </Link>
+      </Breadcrumbs>
+      </div>
+
+      <h1 className='large text-primary bg-dark my-2' style={{textAlign:"center"}}>Edit Your Profile</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Let's get some information to make your
         profile stand out!
@@ -234,7 +250,7 @@ const EditProfile = ({
           </Fragment>
         )}
 
-        <input type='submit' className='btn btn-primary my-1' />
+        <input type='submit' className='btn btn-success my-1' />
 
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back

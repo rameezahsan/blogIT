@@ -23,6 +23,8 @@ router.post(
       const user = await User.findById(req.user.id).select('-password');
       const newPost = new Post({
         text: req.body.text,
+        title:req.body.title,
+        category:req.body.category,
         name: user.name,
         avatar: user.avatar,
         user: req.user.id,
@@ -35,6 +37,41 @@ router.post(
     }
   }
 );
+
+//@route POST api/posts/mental-health
+//desc create a mental health blog
+//access private
+router.post(
+  '/mental-health',
+  [auth, [check('text', 'text field must not be empty').not().isEmpty()]],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors });
+    }
+
+    try {
+      // console.log(req.body);
+      const user = await User.findById(req.user.id).select('-password');
+      const newPost = new Post({
+        text: req.body.text,
+        // title:req.body.title,
+        category:req.body.category,
+        title:req.body.title,
+        name: user.name,
+        avatar: user.avatar,
+        user: req.user.id,
+      });
+      const post = await newPost.save();
+      res.json(post);
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send('server error..');
+    }
+  }
+);
+
+
 
 //route GET api/posts
 //desc get all posts

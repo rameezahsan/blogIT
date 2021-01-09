@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
-import TextField from '@material-ui/core/TextField'; 
-import Button from '@material-ui/core/Button'
-import SearchIcon from '@material-ui/icons/Search';
+import Button from '@material-ui/core/Button';
+
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
@@ -16,14 +15,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
         </li> */}
 
-        <li>
-        <Link to='/write-post'>
-        <Button variant="contained" color="secondary" size="medium" style={{marginTop:"-3px"}}>
-        <i className="fas fa-pencil-alt"></i>{' '}
-          <span className='hide-sm'>write a blog</span>
-        </Button>
-        </Link>
-      </li>
         <li>
         <Link to='/posts'>
         <i className="fas fa-home"></i>{' '}
@@ -54,24 +45,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
       </li> */}
       <li>
-        <Link to='/write-post'>
-        <Button variant="contained" color="secondary" size="medium" style={{marginTop:"-3px"}}>
-        <i className="fas fa-pencil-alt"></i>{' '}
-          <span className='hide-sm'>write a blog</span>
-        </Button>
-        </Link>
-      </li>
-      <li>
         <Link to='/register'>
         <i className="fas fa-user-plus"/>{' '}
-        <span className="hide-sm">Register</span>
+        <span>Register</span>
         </Link>
       </li>
 
       <li>
         <Link to='/login'>
         <i className="fas fa-sign-in-alt"/>{' '}
-        <span className="hide-sm">Login</span>
+        <span>Login</span>
         </Link>
       </li>
     </ul>
@@ -79,25 +62,38 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   
   return (
-    <nav className='navbar bg-dark2'>
-      <h1>
+    <nav className='navbar2 bg-pink2'>
+      {/* <h1>
         <Link to='/posts'>
-        <i class="fas fa-blog"></i> BLOGIT.COM
         </Link>
-      </h1>
-      {/* <div className="search-container">
-        <form>
-        <input style={{fontSize:"20px",background:"#ffffff",borderRadius:"5px",width:"350px",height:"43px"}} placeholder="search a blog..."/>
-        <Button style={{height:"42px",marginBottom:"4px"}} color="secondary" variant="contained"><SearchIcon/></Button>
-        </form>
-     </div> */}
+      </h1> */}
       {!loading && (
-        <Fragment> {isAuthenticated ? authLinks : guestLinks}</Fragment>
+        <Fragment> 
+                <ul>
+                    <li>
+                    <Link to="/mental-health">
+                    <Button  variant="contained" color="secondary"><i className="fas fa-heartbeat"/>{' '} Mental Health</Button>
+                    </Link>
+                    </li>
+
+                    <li>
+                    <Link to="/it-and-tech">
+                    <Button variant="contained" color="secondary"><i className="fas fa-mobile"/>{' '} IT and Tech</Button>
+                    </Link>
+                    </li>
+
+                    <li>
+                    <Link to="/politics">
+                    <Button variant="contained" color="secondary"><i className="fas fa-landmark"/>{' '} Politics</Button>
+                    </Link>
+                    </li>
+                </ul>
+        </Fragment>
       )}
     </nav>
   );
 };
-
+{/* <i class="fas fa-landmark"></i> */}
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
